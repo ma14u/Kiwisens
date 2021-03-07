@@ -71,6 +71,9 @@ public class Connection {
             Intent gattServiceIntent = new Intent(context, BluetoothLeService.class);
             context.bindService(gattServiceIntent, mServiceConnection, Context.BIND_AUTO_CREATE);
 
+
+            registerReciever(context);
+
         }catch (Exception ex)
         {
 
@@ -102,6 +105,8 @@ public class Connection {
             String action = intent.getAction();
             if (BluetoothLeService.ACTION_GATT_CONNECTED.equals(action)) {
                 App.isConnecting = false;
+
+                manager.realTimeTemp(0X80, 1);
 
 
             } else if (BluetoothLeService.ACTION_GATT_DISCONNECTED.equals(action)) {
