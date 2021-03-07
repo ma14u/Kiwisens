@@ -1,0 +1,3 @@
+include ':kiwiLibrary'
+include ':app'
+rootProject.name = "KiwiLibrary"
