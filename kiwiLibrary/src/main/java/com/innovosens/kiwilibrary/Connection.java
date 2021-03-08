@@ -8,6 +8,7 @@ import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.location.LocationManager;
 import android.os.Build;
+import android.os.Handler;
 import android.os.IBinder;
 import android.text.TextUtils;
 import android.util.Log;
@@ -72,7 +73,7 @@ public class Connection {
             context.bindService(gattServiceIntent, mServiceConnection, Context.BIND_AUTO_CREATE);
 
 
-            registerReciever(context);
+        //    registerReciever(context);
 
         }catch (Exception ex)
         {
@@ -106,13 +107,17 @@ public class Connection {
             if (BluetoothLeService.ACTION_GATT_CONNECTED.equals(action)) {
                 App.isConnecting = false;
 
-                manager.realTimeTemp(0X80, 1);
 
 
             } else if (BluetoothLeService.ACTION_GATT_DISCONNECTED.equals(action)) {
 
+
+
+
             } else if (BluetoothLeService.ACTION_GATT_SERVICES_DISCOVERED.equals(action)) {
                 Log.d(TAG, "ACTION_GATT_SERVICES_DISCOVERED: ");
+
+
 
             } else if (BluetoothLeService.ACTION_DATA_AVAILABLE.equals(action)) {
                 final byte[] txValue = intent
@@ -153,6 +158,13 @@ public class Connection {
     public static void getTemperature()
     {
         manager.realTimeTemp(0X80, 1);
+
+    }
+
+
+    public static void stopTemperature()
+    {
+        manager.realTimeTemp(0X80, 0);
 
     }
 
