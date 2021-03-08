@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.innovosens.kiwilibrary;
+package com.innovosens.kiwilibrary.Utils;
 
 import java.util.HashMap;
 

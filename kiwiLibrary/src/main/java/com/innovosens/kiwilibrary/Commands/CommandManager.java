@@ -1,13 +1,14 @@
-package com.innovosens.kiwilibrary;
+package com.innovosens.kiwilibrary.Commands;
 
 import android.content.Context;
 import android.content.Intent;
-import android.text.TextUtils;
 import android.util.Log;
 
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 
+import com.innovosens.kiwilibrary.Constants.BleConstans;
+import com.innovosens.kiwilibrary.Constants.Constans;
 
 import java.util.Calendar;
 

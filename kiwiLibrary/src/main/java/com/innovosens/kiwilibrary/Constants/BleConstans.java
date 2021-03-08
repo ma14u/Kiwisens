@@ -1,4 +1,4 @@
-package com.innovosens.kiwilibrary;
+package com.innovosens.kiwilibrary.Constants;
 
 
 public class BleConstans {

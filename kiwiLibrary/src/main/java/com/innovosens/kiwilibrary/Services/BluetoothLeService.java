@@ -1,4 +1,4 @@
-package com.innovosens.kiwilibrary;
+package com.innovosens.kiwilibrary.Services;
 
 import android.annotation.SuppressLint;
 import android.app.Service;
@@ -28,6 +28,11 @@ import com.innovosens.kiwisens.SampleGattAttributes;
 import com.innovosens.kiwisens.Utils.DataHandlerUtils;
 import com.innovosens.kiwisens.constans.BleConstans;
 import com.innovosens.kiwisens.constans.Constans;*/
+
+import com.innovosens.kiwilibrary.App;
+import com.innovosens.kiwilibrary.Constants.BleConstans;
+import com.innovosens.kiwilibrary.Constants.Constans;
+import com.innovosens.kiwilibrary.Utils.SampleGattAttributes;
 
 import java.util.ArrayList;
 import java.util.List;

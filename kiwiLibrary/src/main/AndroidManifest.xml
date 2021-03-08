@@ -7,7 +7,7 @@
     <application>
 
         <service
-            android:name=".BluetoothLeService"
+            android:name=".Services.BluetoothLeService"
             android:enabled="true" />
 
     </application>

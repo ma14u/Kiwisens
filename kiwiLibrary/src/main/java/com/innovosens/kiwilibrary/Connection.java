@@ -8,15 +8,15 @@ import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.location.LocationManager;
 import android.os.Build;
-import android.os.Handler;
 import android.os.IBinder;
 import android.text.TextUtils;
 import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
-import org.json.JSONArray;
-import org.json.JSONException;
+import com.innovosens.kiwilibrary.Commands.CommandManager;
+import com.innovosens.kiwilibrary.Services.BluetoothLeService;
+import com.innovosens.kiwilibrary.Utils.DataHandlerUtils;
 
 import java.util.List;
 
@@ -167,6 +167,22 @@ public class Connection {
         manager.realTimeTemp(0X80, 0);
 
     }
+
+
+
+    public static void getHeartRate()
+    {
+        manager.realTimeAndOnceMeasure(0X0A, 1);
+
+    }
+
+
+    public static void stopHeartRate()
+    {
+        manager.realTimeAndOnceMeasure(0X0A, 0);
+
+    }
+
 
 
 }
