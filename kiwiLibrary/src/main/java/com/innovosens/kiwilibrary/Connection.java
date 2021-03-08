@@ -136,9 +136,6 @@ public class Connection {
                         int hrValue1 = datas.get(7);
 
 
-                        Log.e("hrValue",":"+hrValue);
-                        Log.e("hrValue1",":"+hrValue1);
-
 
                     } catch (Exception e) {
 
