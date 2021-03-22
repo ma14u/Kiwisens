@@ -186,6 +186,15 @@ public class Connection {
             BluetoothLeService.mConnectionState= 0;
 
 
+            if(context.bindService( new Intent(context, BluetoothLeService.class), mServiceConnection, Context.BIND_AUTO_CREATE ))
+
+            {
+                context.unbindService(mServiceConnection);
+            }
+
+
+
+
         }catch (Exception ex)
         {
 
