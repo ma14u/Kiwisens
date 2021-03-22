@@ -180,6 +180,17 @@ public class Connection {
 
     }
 
+    public static void disconnectDevice(Context context,String deviceAddress) {
+        try {
 
+            BluetoothLeService.mConnectionState= 0;
+
+
+        }catch (Exception ex)
+        {
+
+        }
+
+    }
 
 }
