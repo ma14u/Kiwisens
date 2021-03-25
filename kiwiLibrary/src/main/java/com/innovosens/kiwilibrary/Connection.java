@@ -8,6 +8,7 @@ import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.location.LocationManager;
 import android.os.Build;
+import android.os.Handler;
 import android.os.IBinder;
 import android.text.TextUtils;
 import android.util.Log;
@@ -17,6 +18,9 @@ import androidx.annotation.RequiresApi;
 import com.innovosens.kiwilibrary.Commands.CommandManager;
 import com.innovosens.kiwilibrary.Services.BluetoothLeService;
 import com.innovosens.kiwilibrary.Utils.DataHandlerUtils;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.util.List;
 
@@ -145,6 +149,52 @@ public class Connection {
 
                 }
 
+
+                if (datas.get(0) == 0xAB && datas.get(3) == 0xFF && datas.get(5) == 0X0A) {
+
+                    //heartrate
+
+                    int hrValue = datas.get(6);
+
+                    if (hrValue > 0) {
+
+
+                    }
+
+                }
+
+
+                if (datas.get(0) == 0xAB && datas.get(3) == 0xFF && datas.get(5) == 0X12) {
+
+                    //oxygen
+
+                    int oxygen = datas.get(6);
+
+
+                    if (oxygen > 0) {
+
+
+                    }
+
+                }
+
+
+                if (datas.get(0) == 0xAB && datas.get(3) == 0xFF && datas.get(5) == 0X22) {
+
+                    //bp
+
+                    int sys = datas.get(6);
+                    int dia = datas.get(7);
+
+
+                    if (sys > 0) {
+
+
+                    }
+
+                }
+
+
             }
 
         }
@@ -180,6 +230,34 @@ public class Connection {
 
     }
 
+
+    public static void getOxygen()
+    {
+        manager.realTimeAndOnceMeasure(0X12, 1);
+
+    }
+
+
+    public static void stopOxygen()
+    {
+        manager.realTimeAndOnceMeasure(0X12, 0);
+
+    }
+
+    public static void getBloodPressure()
+    {
+        manager.realTimeAndOnceMeasure(0X22, 1);
+
+    }
+
+
+    public static void stopBloodPressure()
+    {
+        manager.realTimeAndOnceMeasure(0X22, 0);
+
+    }
+
+
     public static void disconnectDevice(Context context,String deviceAddress) {
         try {
 
@@ -191,8 +269,6 @@ public class Connection {
             {
                 context.unbindService(mServiceConnection);
             }
-
-
 
 
         }catch (Exception ex)
