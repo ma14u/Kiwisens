@@ -7,12 +7,7 @@ import java.util.List;
 
 public class DataHandlerUtils {
 
-    /**
-     * 拼接字节数组
-     * @param data1
-     * @param data2
-     * @return
-     */
+
     public static byte[] addBytes(byte[] data1, byte[] data2) {
         byte[] data3 = data1;
         if (data2 != null && data2.length != 0){
@@ -24,11 +19,6 @@ public class DataHandlerUtils {
     }
 
 
-    /**
-     * byte[] --> 十六进制的字符串
-     * @param bytes
-     * @return
-     */
     public static String bytesToHexStr(byte[] bytes){
         StringBuilder stringBuilder = new StringBuilder("");
         if (bytes == null || bytes.length <= 0) {
@@ -46,9 +36,7 @@ public class DataHandlerUtils {
         return stringBuilder.toString();
     }
 
-    /**
-     * 字节数组转化成集合
-     */
+
     public static List<Integer> bytesToArrayList(byte[] bytes){
         List<Integer> datas = new ArrayList<>();
         for (int i = 0; i < bytes.length; i++) {
@@ -57,9 +45,7 @@ public class DataHandlerUtils {
         return datas;
     }
 
-    /**
-     * 字节数组转化成集合
-     */
+
     public static List<Integer> bytesToArrayListForEcg(byte[] bytes){
         List<Integer> datas = new ArrayList<>();
         for (byte aByte : bytes) {

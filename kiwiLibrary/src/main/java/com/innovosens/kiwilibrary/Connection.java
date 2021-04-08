@@ -257,6 +257,12 @@ public class Connection {
 
     }
 
+    public static void getBatteryInfo()
+    {
+        manager.getBatteryInfo();
+
+    }
+
 
     public static void disconnectDevice(Context context,String deviceAddress) {
         try {
