@@ -76,9 +76,6 @@ public class Connection {
             Intent gattServiceIntent = new Intent(context, BluetoothLeService.class);
             context.bindService(gattServiceIntent, mServiceConnection, Context.BIND_AUTO_CREATE);
 
-
-        //    registerReciever(context);
-
         }catch (Exception ex)
         {
 

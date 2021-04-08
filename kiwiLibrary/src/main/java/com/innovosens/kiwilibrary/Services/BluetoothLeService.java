@@ -21,6 +21,8 @@ import android.os.IBinder;
 import android.util.Log;
 
 import androidx.annotation.RequiresApi;
+
+
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 /*import com.innovosens.kiwisens.App;
@@ -152,7 +154,7 @@ public class BluetoothLeService extends Service {
 
                     }
                 }
-                enableTXNotification();//允许接收蓝牙设备发送过来的数据
+                enableTXNotification();
 
             } else {
                 Log.w(TAG, "onServicesDiscovered received: " + status);
@@ -334,7 +336,7 @@ public class BluetoothLeService extends Service {
 
 
         mBluetoothGatt.disconnect();
-      // device=nu;
+      // device=null;
     }
 
     /**
@@ -431,12 +433,13 @@ public class BluetoothLeService extends Service {
         LocalBroadcastManager.getInstance(this).unregisterReceiver(sendDataToBleReceiver);
     }
 
-    /**
-     * 设置数据到内部缓冲区对BLE发送数据
-     */
+
+
+
+
     private void BLE_send_data_set(byte[] data, boolean retry_status) {
         if (ble_status != FREE || mConnectionState != STATE_CONNECTED) {
-            //蓝牙没有连接或是正在接受或发送数据，此时将要发送的指令加入集合
+
             if (sendingStoredData) {
                 if (!retry_status) {
                     data_queue.add(data);
@@ -458,7 +461,6 @@ public class BluetoothLeService extends Service {
             }
             packet_counter = 0;
             send_data_pointer = 0;
-            //第一个包
             first_packet = true;
             BLE_data_send();
 
@@ -474,9 +476,7 @@ public class BluetoothLeService extends Service {
         }
     }
 
-    /**
-     * 定时器
-     */
+
     private void start_timer() {
         sendingStoredData = true;
         if (mTimer != null) {
@@ -512,7 +512,7 @@ public class BluetoothLeService extends Service {
 
 
     /**
-     * @brief Send data using BLE. 发送数据到蓝牙
+     * @brief Send data using BLE.
      */
     private void BLE_data_send() {
         int err_count = 0;
@@ -520,25 +520,20 @@ public class BluetoothLeService extends Service {
         int wait_counter;
         boolean first_packet_save;
         while (!final_packet) {
-            //不是最后一个包
             byte[] temp_buffer;
             send_data_pointer_save = send_data_pointer;
             first_packet_save = first_packet;
             if (first_packet) {
-                //第一个包
 
                 if ((send_data.length - send_data_pointer) > (SEND_PACKET_SIZE)) {
                     temp_buffer = new byte[SEND_PACKET_SIZE];//20
                     for (int i = 0; i < SEND_PACKET_SIZE; i++) {
-                        //将原数组加入新创建的数组
                         temp_buffer[i] = send_data[send_data_pointer];
                         send_data_pointer++;
                     }
                 } else {
-                    //发送的数据包不大于20
                     temp_buffer = new byte[send_data.length - send_data_pointer];
                     for (int i = 0; i < temp_buffer.length; i++) {
-                        //将原数组未发送的部分加入新创建的数组
                         temp_buffer[i] = send_data[send_data_pointer];
                         send_data_pointer++;
                     }
@@ -546,7 +541,6 @@ public class BluetoothLeService extends Service {
                 }
                 first_packet = false;
             } else {
-                //不是第一个包
                 if (send_data.length - send_data_pointer >= SEND_PACKET_SIZE) {
                     temp_buffer = new byte[SEND_PACKET_SIZE];
                     temp_buffer[0] = (byte) packet_counter;

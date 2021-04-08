@@ -33,9 +33,6 @@ public class CommandManager {
     }
 
 
-
-
-
     public void getBatteryInfo(){
         byte[] bytes = new byte[6];
         bytes[0] = (byte) 0xAB;
@@ -56,7 +53,7 @@ public class CommandManager {
         bytes[3] = (byte) 0xFF;
         bytes[4] = (byte) 0x31;
         bytes[5] = (byte) status;
-        bytes[6] = (byte) control;//0关  1开
+        bytes[6] = (byte) control;
         broadcastData(bytes);
     }
 
@@ -68,16 +65,10 @@ public class CommandManager {
         bytes[2] = (byte) 4;
         bytes[3] = (byte) 0xFF;
         bytes[4] = (byte) 0x86;
-        //心率：0X09(单次) 0X0A(实时)  血氧：0X11(单次) 0X12(实时) 血压：0X21 0X22   // body temp 0X80
         bytes[5] = (byte) status;
-        bytes[6] = (byte) control;//0关  1开
+        bytes[6] = (byte) control;
         broadcastData(bytes);
     }
-
-
-
-
-
 
 
     /**
